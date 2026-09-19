@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D 自动立体车库仿真系统</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <aside id="panel">
+      <h1>立体车库仿真</h1>
+
+      <section class="card">
+        <h2>车位占用率</h2>
+        <div class="occ-bar"><div id="occFill"></div></div>
+        <div id="occText" class="mono">0 / 0</div>
+      </section>
+
+      <section class="card">
+        <h2>车辆入库</h2>
+        <div class="row">
+          <input id="plateInput" type="text" placeholder="车牌号（留空自动生成）" maxlength="8">
+          <button id="btnStore">入库</button>
+        </div>
+        <div class="row">
+          <button id="btnRandom" class="ghost">随机生成车辆入库</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>当前任务</h2>
+        <div id="currentTask" class="mono">空闲</div>
+        <h2>任务队列 <span id="queueCount" class="badge">0</span></h2>
+        <ul id="taskQueue" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>设备状态</h2>
+        <div id="deviceStatus" class="mono"></div>
+        <div class="row">
+          <label for="speedRange">仿真速度</label>
+          <input id="speedRange" type="range" min="0.5" max="3" step="0.1" value="1">
+          <span id="speedText" class="mono">1.0x</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>在库车辆（点击取车）</h2>
+        <ul id="carList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>运行日志</h2>
+        <div id="log" class="mono"></div>
+      </section>
+    </aside>
+    <div id="viewport"></div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
