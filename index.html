@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D 自动立体车库仿真系统</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.js" } }
+  </script>
+</head>
+<body>
+  <div id="viewport"></div>
+
+  <aside id="panel">
+    <h1>立体车库仿真系统</h1>
+
+    <section class="card">
+      <h2>设备状态</h2>
+      <div class="kv"><span>系统状态</span><b id="st-system">空闲</b></div>
+      <div class="kv"><span>横移台车 X</span><b id="st-x">0.00 m</b></div>
+      <div class="kv"><span>升降平台 Y</span><b id="st-y">0.00 m（地面层）</b></div>
+      <div class="kv"><span>伸缩货叉</span><b id="st-fork">中位收回</b></div>
+      <div class="kv"><span>仿真速度</span>
+        <b>
+          <select id="speed">
+            <option value="0.5">0.5x</option>
+            <option value="1" selected>1x</option>
+            <option value="2">2x</option>
+            <option value="4">4x</option>
+          </select>
+        </b>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>当前任务</h2>
+      <div id="task-current" class="task-current">无任务</div>
+      <div class="kv"><span>等待队列</span><b id="task-queue">0 个任务</b></div>
+    </section>
+
+    <section class="card">
+      <h2>车位占用率</h2>
+      <div class="occ-total">
+        <div class="bar"><div id="occ-bar" class="bar-fill"></div></div>
+        <b id="occ-text">0 / 48（0%）</b>
+      </div>
+      <div id="occ-floors"></div>
+    </section>
+
+    <section class="card">
+      <h2>车辆管理</h2>
+      <button id="btn-park" class="primary">新车入库（自动分配车位）</button>
+      <div id="car-list" class="car-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>运行日志</h2>
+      <div id="log" class="log"></div>
+    </section>
+
+    <p class="hint">提示：点击 3D 场景中已占用的车位可直接发起取车；拖动鼠标旋转视角，滚轮缩放。</p>
+  </aside>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
